@@ -8,7 +8,9 @@
 - [Editing Images](#editing-images)
 - [Effective Prompting](#effective-prompting)
 - [License](#license)
+---
 
+<h1 id=introduction align="center"> Introduction</h1>
 
 <details>
   <summary>
@@ -106,15 +108,15 @@ Here's another more involved example of how to use the command:
 
 ### U Buttons: Image Upscaling
 
-U buttons, ranging from U1 to U4, allow you to upscale an image, generating a larger version with added details.
+>U buttons, ranging from U1 to U4, allow you to upscale an image, generating a larger version with added details.
 
 ### V Buttons: Variations
 
-V buttons, available from V1 to V4, create slight variations of your selected grid image. Each variation maintains the general look and composition of the original.
+>V buttons, available from V1 to V4, create slight variations of your selected grid image. Each variation maintains the general look and composition of the original.
 
 ### 🔄 Re-roll
 
-You can also choose to re-run the job, which will re-initiate the original prompt and produce a fresh grid of images.
+>You can also choose to re-run the job, which will re-initiate the original prompt and produce a fresh grid of images.
 
 <h2 align="center">Improving Your Midjourney Prompts</h2>
 
@@ -136,7 +138,7 @@ Add any additional text and parameters to complete the prompt after adding the i
 /imagine prompt: http://imageURL1.png description of what to imagine --parameter1 --parameter2
 ```
 
-<h3 align="center">Image Prompt Rules</h3>
+<h2 align="center">Image Prompt Rules</h2>
 To effectively use image prompts, remember these key rules:
 
 Prompts with images must start with the image web address.
@@ -145,11 +147,43 @@ The image URL should end with .png, .gif, .webp, .jpg, or .jpeg.
 You can obtain an image URL by right-clicking an image and selecting ‘Copy Image Address’ in most browsers.
 For mobile users: A streamlined image prompting procedure is available using the /blend command.
 
-<h3 align="center">Uploading Images from Your Device</h3>
+<h2 align="center">Uploading Images from Your Device</h2>
 <p>If your image resides on your computer or phone, follow these steps to include it in your prompt:</p>
 Send the image to the Midjourney bot to generate a shareable link. The image address link should end with .png, .gif, .webp, .jpg, or .jpeg for compatibility.
 
 
-<h1 id=effective-prompting align="center"> Effective Prompting</h1>
 
+<h1 id=effective-prompting align="center"> Effective Prompting</h1>
+Tips for Using MJ (Model's Name)
+
+1. **Word Weight:** Place crucial words early in the prompt for more influence.
+
+2. **Breaks:** Commas are soft, `::` are hard, affecting concept blending.
+
+3. **Adjust Weights:** Use `::n` for words and `--iw n` for images to set priorities.
+
+4. **Aspect Ratios:** Choose carefully to avoid unwanted distortions.
+
+5. **Reference Artists:** Mention artists for style or content guidance.
+
+6. **Prompts Complexity:** Long prompts may yield great or nonsense results.
+
+7. **Image + Text:** Combine to ensure key elements transfer to the image.
+
+8. **Style Replication:** Use style images if not in MJ's reference.
+
+9. **Specific Instructions:** Specify details when necessary.
+
+10. **Negative Weights:** Use `--no` for exclusion.
+
+Experiment and refine to achieve desired outcomes.
+
+
+
+<h1 id=license align="center"> License</h1>
+This project is licensed under the MIT License
+
+---
+Copyright (c) 2023 Interact-Brands
+---
 
