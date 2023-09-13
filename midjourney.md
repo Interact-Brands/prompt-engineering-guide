@@ -178,6 +178,7 @@ Tips for Using MJ (Model's Name)
 
 Experiment and refine to achieve desired outcomes.
 
+More on LLM prompting here, [Effective LLM Prompting](effective-prompting.md).
 
 
 <h1 id=license align="center"> License</h1>
