@@ -61,7 +61,7 @@ Midjourney offers four subscription tiers, each with its own set of benefits, in
 ![Mj Plans](img/mj-intro-screen.png)
 
 2. Use the `/subscribe` command to generate a personal link to the subscription page.
-![Mj Plans](img/mj-subscribe.png)
+![Mj Plans](img/mj-subscribe.PNG)
 
 3. Click on manage account and it will direct you to the plans page where you can opt for one of the four tier plans.
 ---
