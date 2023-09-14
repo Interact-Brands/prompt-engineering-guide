@@ -1,4 +1,4 @@
-# Prompting Guide
+# Prompting Guide 
 
 ## Table of Contents
 
