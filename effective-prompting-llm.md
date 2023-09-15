@@ -58,11 +58,10 @@ Chain-of-thought (CoT) prompting, introduced in Wei et al. (2022), allows for co
 > In the provided example, the prompt presents groups of numbers and apples. By demonstrating the reasoning process in the answer (A), the model effectively solves the task. It involves breaking down complex reasoning tasks into a series of intermediate steps or thought processes. This helps the model understand and reason through the problem step by step. It's important to note that this capability emerges in large language models, as stated by the authors.
 
 ---
-See how ChatGPT answers the question with Chain of Thought purely
+ChatGPT answers the question with purely Chain of Thought
 ![COT](img/chat.PNG)
 ---
 
----
 
 <h1 id=risks align="center">Models and Risks</h1>
 
