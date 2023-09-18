@@ -61,9 +61,6 @@ Feel free to explore these commands to enhance your experience with the Midjourn
 <h1 id=parameters align="center">Parameters</h1>
 
 
-### Basic Parameters
-
-- `--aspect` or `--ar`: Change the aspect ratio of a generation.
 
 ### Aspect Ratios
 
