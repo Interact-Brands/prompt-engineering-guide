@@ -98,17 +98,12 @@ When working with Language Models (LLMs), it's essential to structure your promp
 
 **Prompt:**
 > Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
-
-
-### Examples of well-structured titles ###  
-      
-- "Long walk to freedom"  
-- "Wishful drinking"  
-- "I know why the caged bird sings"
+Examples of well-structured titles:
+>- "Long walk to freedom"  
+>- "Wishful drinking"  
+>- "I know why the caged bird sings"
 
 By structuring your prompts clearly, you can enhance the model's understanding and improve the quality of generated responses.
-
-## How to Create Effective Prompts
 
 When designing prompts for your project:
 - Use clear and concise language.
@@ -119,7 +114,7 @@ When designing prompts for your project:
 Following these guidelines will help you achieve better results when working with Language Models.
 
 ---
----
+
 <h1 id=risks align="center">Models and Risks</h1>
 
 
@@ -144,16 +139,16 @@ Following these guidelines will help you achieve better results when working wit
 
 ---
 
-## Risks
+**Risks:**
 
 This section emphasizes the importance of considering the potential dangers and misuses of language models (LLMs), especially when applied in real-world applications. It discusses risks related to prompt injections and harmful behaviors. Additionally, it mentions the need to address issues such as generalizability, calibration, biases (including social biases), and factuality when working with LLMs.
 
 
-### Factuality
+**Factuality:**
 
 When utilizing Language Models (LLMs), it's common for them to generate responses that appear coherent but can sometimes be entirely fictitious. Improving their accuracy and dependability hinges on the effective optimization of prompts. Here, we discuss some technical strategies to address this issue:
 
-### Ground Truth Integration
+**Ground Truth Integration**
 
 One way to bolster the reliability of LLM-generated responses is to incorporate verified information, such as excerpts from pertinent articles or Wikipedia entries, into the contextual information provided. This practice significantly diminishes the chances of the model generating fabricated or inaccurate responses.
 
@@ -166,8 +161,7 @@ Generate a response that incorporates verified information, such as an excerpt f
 
 > The most common symptoms of COVID-19 are fever, cough, shortness of breath, and fatigue. Other symptoms may include muscle aches, headache, sore throat, congestion or runny nose, nausea or vomiting, and diarrhea.
 
-According to the Centers for Disease Control and Prevention (CDC), the following are the most common symptoms of COVID-19:
-
+> According to the Centers for Disease Control and Prevention (CDC), the following are the most common symptoms of COVID-19:
 - Fever or chills
 - Cough
 - Shortness of breath or difficulty breathing
@@ -180,18 +174,18 @@ According to the Centers for Disease Control and Prevention (CDC), the following
 - Diarrhea
 - Loss of taste or smell
 
-#### Explanation
+**Explanation**
 
 This response incorporates verified information by including an excerpt from the CDC website. This excerpt provides a comprehensive list of the most common symptoms of COVID-19, and it is also a credible source of information.
 
 > Ground truth integration is an important technique for improving the reliability of NLP models. By incorporating verified information into responses, NLP models can reduce the risk of fabricating information and provide more accurate and informative responses.
 
 
-### Response Calibration
+**Response Calibration**
 
 Response calibration involves fine-tuning the LLM by adjusting its parameters to minimize response variability. Furthermore, you can instruct the model to explicitly acknowledge uncertainty by generating responses like "I don't know" when it lacks a precise answer. This enhances the model's ability to provide accurate and meaningful information.
 
-### Mixed Prompt Approach
+**Mixed Prompt Approach**
 
 By designing prompts that consist of a combination of questions and potential answers, encompassing both within and beyond the model's knowledge domain, you help the LLM better discern the boundaries of its expertise. This mixed prompt approach contributes to more contextually appropriate and factual responses.
 
