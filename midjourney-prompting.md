@@ -209,7 +209,7 @@ These images are intended to be cartoons instead of looking realistic.
 **Prompt Used:** 
 >Hyper - realistic pencil drawing, fine art, wide angle, drawing of a Harley Davidson style motorcycle, intricate details, the scene shows her confidently walking down the park boulevard, New York, anatomically perfect, ultra sharp, hyper - realistic 32k --v 5.0
 
-![Realistic](https://cdn.discordapp.com/attachments/991047719546142830/1150861894316470272/Erich_Hyper_-_realistic_pencil_drawing_fine_art_wide_angle_draw_2196b8fd-3e56-40b1-b1d1-636e0f473c0b.png)
+![Realistic](img/pencil.png)
 
 Just like cartoon images, you can use "pencil-drawing style" for the appropriate effect in the image.
 
@@ -225,7 +225,7 @@ Just like cartoon images, you can use "pencil-drawing style" for the appropriate
 **Prompt Used:** 
 >lassic abstract artistic interpretation, a modern trailblazing native chinese dad, headphones on listening to music while reading a thick book, kind, gentle, educated, humble, love of music, style of Joan Miro contrast, light --upbeta --v 4 - 
 
-![Realistic](https://cdn.discordapp.com/attachments/1008571122889011290/1142652452009689209/grillaknuckles_classic_abstract_artistic_interpretation_a_moder_c0745259-0c9e-4b79-ae9e-d199f416ca17.png)
+![Realistic](img/style.png)
 
 You can command Midjourney to create visuals in the form of different artists and art styles. Whether you want your image to look like something Salvador Dali or Leonardo Da Vinci made, you have that option available.
 
@@ -234,7 +234,7 @@ You can command Midjourney to create visuals in the form of different artists an
 **Prompt Used:** 
 >8-bit pixel art of a knit hat, autumn aesthetic, simple, minimalist 2d vector, umber palette
 
-![Realistic](https://cdn.discordapp.com/attachments/945077390839787570/1151912978350874676/Adriann_8-bit_pixel_art_of_a_knit_hat_autumn_aesthetic_simple_m_84533a08-81fe-4f32-96f2-c72694ba162f.png)
+![Realistic](img/hat2d.png)
 
 Vector images are mathematically defined images, which makes them great for using on your website since they can be resized without losing image quality. You can generate vector images by entering the "vector" command on Midjourney.
 
@@ -243,7 +243,7 @@ Vector images are mathematically defined images, which makes them great for usin
 **Prompt Used:** 
 >film photography of group of indigenous children watching the muppet show in pastel coloured circuss of qalapaq. Qalapaq is fictional city in antartica. The scene of the outdoor pupet show is also in pastel tones. The photography was shot in 1920's and coloured in agfa vista style
 
-![Realistic](https://cdn.discordapp.com/attachments/1072899954525356072/1151913114971943012/onrshrf_35mm_film_photography_of_group_of_indigenous_children_w_bd2b8a15-c86c-4ab6-8004-51cfdb47f0b8.png)
+![Realistic](img/film.png)
 
 You can use film photography-style images in Midjourney, too. Simply input the aperture, ISO settings, and dimensions, and Midjourney will create the image.
 
@@ -252,7 +252,7 @@ You can use film photography-style images in Midjourney, too. Simply input the a
 **Prompt Used:** 
 >Chinese ancient style handsome man, frontal close-up, with black hair, wearing a black traditional Hanfu,Red ribbons tied to the hair, lay on a small boat in the middle of a lake, holding an antique Chinese wine jar and drinking :5, surrounded by blooming lotus flowers, with a serene facial expression, fairy air, the bright moon hangs in the night sky, the surrounding environment is illuminated by the moonlight, forming a quiet and mysterious atmosphere, delicate facial features, details painting, fantasy art, animation aesthetics, HD 8k --ar 16:9 --niji 5
 
-![Realistic](https://cdn.discordapp.com/attachments/1008571037862080542/1151875408053157949/zhuzhuf6_Chinese_ancient_style_handsome_man_frontal_close-up_wi_e4f5306b-75de-459f-86e5-507f85a4a7bc.png)
+![Realistic](img/anime.png)
 
 If you want to create visuals for a manga or comic book, you can use the "anime" keyword in your prompts.
 
@@ -261,7 +261,7 @@ If you want to create visuals for a manga or comic book, you can use the "anime"
 **Prompt Used:** 
 >vogue africa magazine photoshoot scene featuring extremely handsome muscular moroccan male models with nice pecs in moroccanpunk inspired faerietale couture and bedouin faerie faerietale couture gemstsone jewelry, inspired by the work by gualtier, by david lachapelle, by pierre et giles, photo photograph photorealistic --ar 16:9 --stylize 1000 --chaos 100 --no women, female, females, girls
 
-![Realistic](https://cdn.discordapp.com/attachments/945077390839787570/1136293458030645298/egoistetx_vogue_africa_magazine_photoshoot_scene_featuring_extr_fcc8cd14-e008-453b-8dd9-29ae519dffa4.png)
+![Realistic](img/magazine.png)
 
 You can create magazine-style photoshoot ads using Midjourney. Simply use words like "campaign" or "photoshoot" or a photographer's name, and Midjourney will generate relevant images.
 
