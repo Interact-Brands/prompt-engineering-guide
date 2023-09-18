@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
 - [Techniques](#techniques)
+- [Good Prompting](#good-prompting)
 - [Models and Risks](#risks)
 - [License](#license)
 ---
@@ -64,6 +65,61 @@ ChatGPT answers the question with purely Chain of Thought
 ---
 
 
+<h1 id=good-prompting align="center">Good Prompting</h1>
+
+
+**Use Positive Instructions, Not Negative Ones**
+
+This guide emphasizes the importance of providing positive instructions ("do") rather than negative ones ("don't") in your project. Positive instructions tend to be more specific and effective. Instead of telling the model what not to do, it's usually better to specify exactly what we want it to do, assuming we know what that is.
+
+For example, consider the situation where we want to ensure that the Language Model (LM) doesn't generate overly lengthy titles, which it tends to do. Instead of saying
+
+> Don't make the titles too long
+
+It's more effective to be specific:
+
+> Each title should have a length between two and five words.
+
+
+By using positive instructions and specifying what you want to achieve, you can provide clearer guidance to the model and improve the quality of your project.
+
+
+When working with your project's models or AI, remember to:
+- Clearly define the desired behavior.
+- Provide explicit instructions on what the model should do.
+- Avoid vague or negative commands that can lead to unintended results.
+
+Following these guidelines can help you achieve better results and ensure your project's success.
+
+
+**Structure your prompt in a meaningful way**
+
+When working with Language Models (LLMs), it's essential to structure your prompts in a meaningful way. Just as elements like quotation marks, bullet points, and line breaks make it easier for humans to understand text, they also benefit LLMs. Let's apply this insight to our previous example and provide a well-structured prompt:
+
+**Prompt:**
+> Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
+
+
+### Examples of well-structured titles ###  
+      
+- "Long walk to freedom"  
+- "Wishful drinking"  
+- "I know why the caged bird sings"
+
+By structuring your prompts clearly, you can enhance the model's understanding and improve the quality of generated responses.
+
+## How to Create Effective Prompts
+
+When designing prompts for your project:
+- Use clear and concise language.
+- Provide all necessary context.
+- Consider formatting elements that aid comprehension.
+- Test and iterate to optimize prompt effectiveness.
+
+Following these guidelines will help you achieve better results when working with Language Models.
+
+---
+---
 <h1 id=risks align="center">Models and Risks</h1>
 
 
