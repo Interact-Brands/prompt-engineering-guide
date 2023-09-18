@@ -118,7 +118,7 @@ Feel free to explore these commands to enhance your experience with the Midjourn
 
 ### Turbo Mode
 
-- `--Turbo`: Override your current setting and run a single job using Turbo Mode.
+- `--Turbo`: Override your current setting and run a single job using Turbo Mode faster
 
 ### Weird Aesthetics
 
