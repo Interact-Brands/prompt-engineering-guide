@@ -162,7 +162,7 @@ If you desire an image in a specific artistic style, make sure your keywords ref
 > Hyperrealism photo of a science beaker. There are peppermint, eucalyptus, rosemary and tea tree leaves. Colors are dark gree. light green and beige. the focus is in the beaker. There is a lab and a forest in the back. there is natural light. --s 250 
 ---
 
-![Hyperrealistic](https://cdn.discordapp.com/attachments/1008571244200861726/1151530017185091765/divi_ai_Hyperrealism_photo_of_a_science_beaker._There_are_peppe_0125ec8c-3db5-4e07-9281-6806f04cf1ec.png)
+![Hyperrealistic](img/hyperreal-2.png)
 
 In these types of prompts, you simply describe the primary subject(s) of the image, and Midjourney generates the image based on its interpretation. The "hyperrealistic" command is also particularly useful for making fantastical or animated characters appear real.
 
@@ -170,7 +170,7 @@ In these types of prompts, you simply describe the primary subject(s) of the ima
 > diorama inside a mobile phone, maximalist& hyper - detailed, modern buildings, live music show in the centre with a large crowd, Advertising photography, in the style of samyang 14mm, f/2.8 rf, hyperreal, --ar 9:16 --stylize 500 
 ---
 
-![Hyperrealistic](https://cdn.discordapp.com/attachments/1008571037862080542/1151907398395629609/makegoodshit._diorama_inside_a_mobile_phone_maximalist_hyper_-__4f54b1eb-656e-438b-8760-6d8e0affdf96.png)
+![Hyperrealistic](img/hyperreal-3.png)
 
 
 
@@ -179,14 +179,14 @@ In these types of prompts, you simply describe the primary subject(s) of the ima
 **Prompt Used:** 
 >plain white background, old, monocrome family photo, many generations, only black, white and the tones of emerald color on the whole picture, watercolor painting
 
-![Realistic](https://cdn.discordapp.com/attachments/1008571037862080542/1151906876901036073/namdhjourney_plain_white_background_old_monocrome_family_photo__8415f2b6-7f6e-4c3b-8470-d0ce0459f48e.png)
+![Realistic](img/background.png)
 
 If you want your realistic images to have added elements or context, you can add more information. For example, in the below image, a specific background is described instead of letting Midjourney create a generic background (such as a white background or cyberpunk distantview).
 
 **Prompt Used:** 
 >Tokyo Ginza at night in background, distant view, Hypebeast Radioactive, steampunk cat in orange Balenciaga streetwear standing with his back to the entrance of ramen shop like a human, super realistic sci - fi, cute movie, 8k--v 5.2 --ar 21:9 
 
-![Realistic](https://cdn.discordapp.com/attachments/1008571178560000040/1151908234349793441/vugrl_Tokyo_Ginza_at_night_in_background_distant_view_Hypebeast_4d143b72-ef7e-49da-a831-6e0cd8652a83.png)
+![Realistic](img/cyberpunk.png)
 
 
 ## Cartoon-style
