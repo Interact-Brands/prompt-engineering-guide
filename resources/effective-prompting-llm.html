@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>effective-prompting-llm.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="prompting-guide">Prompting Guide</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#techniques">Techniques</a></li>
+<li><a href="#good-prompting">Good Prompting</a></li>
+<li><a href="#risks">Models and Risks</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<hr>
+<h1 id=introduction align="center"> Introduction</h1>
+<details>
+  <summary>
+    What is Prompt Engineering?
+  </summary>
+    Prompt engineering is a relatively new discipline for developing and optimizing prompts to efficiently use language models (LMs). Prompt crafting isn't just about constructing clever queries; it helps improve the capacity of LLMs on a wide range of common and complex tasks. It's the art of forging a relationship with these linguistic giants, where understanding their capabilities and limitations is just the beginning.
+</details>
+<hr>
+<h1 id=techniques align="center">Techniques</h1>
+<p><strong>Zero-Shot prompting:</strong> Zero-shot prompting is a method in artificial intelligence where a language model is given a task or question without any specific training examples. Instead, it uses its pre-existing knowledge and the provided instructions to generate a response or perform the task. It's a way to make AI models more versatile and adaptable to different tasks without extensive training.</p>
+<blockquote>
+<p>Zero-shot prompting is like asking a very smart friend a question without giving them any background information or examples. They rely on their general knowledge and the way you phrase the question to give you an answer. It's a way for AI to answer questions or do tasks it hasn't been specifically trained for. For example, you might ask, &quot;What are the main ingredients in pizza?&quot; and the AI can answer without having seen a pizza recipe before.</p>
+</blockquote>
+<p><strong>Few-Shot Prompting:</strong></p>
+<p>Few-shot prompting is a technique used with large-language models to improve their performance on complex tasks. While these models can do well without any prior examples (zero-shot), they struggle with more complicated tasks. Few-shot prompting involves giving the model a few examples (demonstrations) in the prompt to help it learn and generate better responses. This method becomes effective when the models are sufficiently large.</p>
+<blockquote>
+<p>For example, imagine we want the model to use a new word in a sentence, like &quot;whatpu&quot; or &quot;farduddle.&quot; By providing a single example sentence using these words in the prompt, the model learns how to use them correctly. This process is called &quot;1-shot&quot; prompting. If the task is harder, we can try with more examples (e.g., 3-shot, 5-shot, 10-shot) to further improve the model's performance.</p>
+</blockquote>
+<p>Prompt:</p>
+<pre class="hljs"><code><div>A &quot;whatpu&quot; is a small, furry animal native to Tanzania. An example of a sentence that uses
+the word whatpu is:
+We were traveling in Africa and we saw these very cute whatpus.
+To do a &quot;farduddle&quot; means to jump up and down really fast. An example of a sentence that uses
+the word farduddle is:
+</div></code></pre>
+<p>Output:</p>
+<pre class="hljs"><code><div>When we won the game, we all started to farduddle in celebration.
+</div></code></pre>
+<hr>
+<p><strong>Chain-of-Thought Prompting</strong></p>
+<p>Chain-of-thought (CoT) prompting, introduced in Wei et al. (2022), allows for complex reasoning by breaking tasks into intermediate steps. When combined with few-shot prompting, it improves results on intricate tasks requiring reasoning.</p>
+<p><img src="img/cot.PNG" alt="COT"></p>
+<blockquote>
+<p>In the provided example, the prompt presents groups of numbers and apples. By demonstrating the reasoning process in the answer (A), the model effectively solves the task. It involves breaking down complex reasoning tasks into a series of intermediate steps or thought processes. This helps the model understand and reason through the problem step by step. It's important to note that this capability emerges in large language models, as stated by the authors.</p>
+</blockquote>
+<hr>
+<p>ChatGPT answers the question with purely Chain of Thought</p>
+<h2 id="cot"><img src="img/chat.PNG" alt="COT"></h2>
+<h1 id=good-prompting align="center">Good Prompting</h1>
+<p><strong>Use Positive Instructions, Not Negative Ones</strong></p>
+<p>This guide emphasizes the importance of providing positive instructions (&quot;do&quot;) rather than negative ones (&quot;don't&quot;) in your project. Positive instructions tend to be more specific and effective. Instead of telling the model what not to do, it's usually better to specify exactly what we want it to do, assuming we know what that is.</p>
+<p>For example, consider the situation where we want to ensure that the Language Model (LM) doesn't generate overly lengthy titles, which it tends to do. Instead of saying</p>
+<blockquote>
+<p>Don't make the titles too long</p>
+</blockquote>
+<p>It's more effective to be specific:</p>
+<blockquote>
+<p>Each title should have a length between two and five words.</p>
+</blockquote>
+<p>By using positive instructions and specifying what you want to achieve, you can provide clearer guidance to the model and improve the quality of your project.</p>
+<p>When working with your project's models or AI, remember to:</p>
+<ul>
+<li>Clearly define the desired behavior.</li>
+<li>Provide explicit instructions on what the model should do.</li>
+<li>Avoid vague or negative commands that can lead to unintended results.</li>
+</ul>
+<p>Following these guidelines can help you achieve better results and ensure your project's success.</p>
+<p><strong>Structure your prompt in a meaningful way</strong></p>
+<p>When working with Language Models (LLMs), it's essential to structure your prompts in a meaningful way. Just as elements like quotation marks, bullet points, and line breaks make it easier for humans to understand text, they also benefit LLMs. Let's apply this insight to our previous example and provide a well-structured prompt:</p>
+<p><strong>Prompt:</strong></p>
+<blockquote>
+<p>Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
+Examples of well-structured titles:</p>
+<ul>
+<li>&quot;Long walk to freedom&quot;</li>
+<li>&quot;Wishful drinking&quot;</li>
+<li>&quot;I know why the caged bird sings&quot;</li>
+</ul>
+</blockquote>
+<p>By structuring your prompts clearly, you can enhance the model's understanding and improve the quality of generated responses.</p>
+<p>When designing prompts for your project:</p>
+<ul>
+<li>Use clear and concise language.</li>
+<li>Provide all necessary context.</li>
+<li>Consider formatting elements that aid comprehension.</li>
+<li>Test and iterate to optimize prompt effectiveness.</li>
+</ul>
+<p>Following these guidelines will help you achieve better results when working with Language Models.</p>
+<hr>
+<h1 id=risks align="center">Models and Risks</h1>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Release Date</th>
+<th>Size (B)</th>
+<th>Checkpoints</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Falcon LLM</td>
+<td>May 2023</td>
+<td>7, 40</td>
+<td><a href="https://huggingface.co/tiiuae">Falcon-7B</a>, <a href="https://huggingface.co/tiiuae">Falcon-40B</a></td>
+<td>Falcon LLM is a foundational large language model (LLM) with 40 billion parameters trained on one trillion tokens. TII has now released Falcon LLM – a 40B model.</td>
+</tr>
+<tr>
+<td>PaLM 2</td>
+<td>May 2023</td>
+<td>-</td>
+<td>-</td>
+<td>A Language Model that has better multilingual and reasoning capabilities and is more compute-efficient than its predecessor PaLM.</td>
+</tr>
+<tr>
+<td>Med-PaLM 2</td>
+<td>May 2023</td>
+<td>-</td>
+<td>-</td>
+<td>Towards Expert-Level Medical Question Answering with Large Language Models</td>
+</tr>
+<tr>
+<td>Gorilla</td>
+<td>May 2023</td>
+<td>7</td>
+<td><a href="https://github.com/ShishirPatil/gorilla">Gorilla</a></td>
+<td>Gorilla: Large Language Model Connected with Massive APIs</td>
+</tr>
+<tr>
+<td>RedPajama-INCITE</td>
+<td>May 2023</td>
+<td>3, 7</td>
+<td><a href="https://huggingface.co/togethercomputer">RedPajama-INCITE</a></td>
+<td>A family of models including base, instruction-tuned &amp; chat models.</td>
+</tr>
+<tr>
+<td>LIMA</td>
+<td>May 2023</td>
+<td>65</td>
+<td>-</td>
+<td>A 65B parameter LLaMa language model fine-tuned with the standard supervised loss on only 1,000 carefully curated prompts and responses, without any reinforcement learning or human preference modeling.</td>
+</tr>
+<tr>
+<td>Replit Code</td>
+<td>May 2023</td>
+<td>3</td>
+<td><a href="https://huggingface.co/replit">Replit Code</a></td>
+<td>replit-code-v1-3b model is a 2.7B LLM trained on 20 languages from the Stack Dedup v1.2 dataset.</td>
+</tr>
+<tr>
+<td>h2oGPT</td>
+<td>May 2023</td>
+<td>12</td>
+<td><a href="https://github.com/h2oai/h2ogpt">h2oGPT</a></td>
+<td>h2oGPT is a large language model (LLM) fine-tuning framework and chatbot UI with document(s) question-answer capabilities.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>Risks:</strong></p>
+<p>This section emphasizes the importance of considering the potential dangers and misuses of language models (LLMs), especially when applied in real-world applications. It discusses risks related to prompt injections and harmful behaviors. Additionally, it mentions the need to address issues such as generalizability, calibration, biases (including social biases), and factuality when working with LLMs.</p>
+<p><strong>Factuality:</strong></p>
+<p>When utilizing Language Models (LLMs), it's common for them to generate responses that appear coherent but can sometimes be entirely fictitious. Improving their accuracy and dependability hinges on the effective optimization of prompts. Here, we discuss some technical strategies to address this issue:</p>
+<p><strong>Ground Truth Integration</strong></p>
+<p>One way to bolster the reliability of LLM-generated responses is to incorporate verified information, such as excerpts from pertinent articles or Wikipedia entries, into the contextual information provided. This practice significantly diminishes the chances of the model generating fabricated or inaccurate responses.</p>
+<p>Generate a response that incorporates verified information, such as an excerpt from a relevant article or Wikipedia entry.</p>
+<h4 id="response">Response</h4>
+<blockquote>
+<p>What are the symptoms of COVID-19?</p>
+</blockquote>
+<blockquote>
+<p>The most common symptoms of COVID-19 are fever, cough, shortness of breath, and fatigue. Other symptoms may include muscle aches, headache, sore throat, congestion or runny nose, nausea or vomiting, and diarrhea.</p>
+</blockquote>
+<blockquote>
+<p>According to the Centers for Disease Control and Prevention (CDC), the following are the most common symptoms of COVID-19:</p>
+</blockquote>
+<ul>
+<li>Fever or chills</li>
+<li>Cough</li>
+<li>Shortness of breath or difficulty breathing</li>
+<li>Fatigue</li>
+<li>Muscle aches</li>
+<li>Headache</li>
+<li>Sore throat</li>
+<li>Congestion or runny nose</li>
+<li>Nausea or vomiting</li>
+<li>Diarrhea</li>
+<li>Loss of taste or smell</li>
+</ul>
+<p><strong>Explanation</strong></p>
+<p>This response incorporates verified information by including an excerpt from the CDC website. This excerpt provides a comprehensive list of the most common symptoms of COVID-19, and it is also a credible source of information.</p>
+<blockquote>
+<p>Ground truth integration is an important technique for improving the reliability of NLP models. By incorporating verified information into responses, NLP models can reduce the risk of fabricating information and provide more accurate and informative responses.</p>
+</blockquote>
+<p><strong>Response Calibration</strong></p>
+<p>Response calibration involves fine-tuning the LLM by adjusting its parameters to minimize response variability. Furthermore, you can instruct the model to explicitly acknowledge uncertainty by generating responses like &quot;I don't know&quot; when it lacks a precise answer. This enhances the model's ability to provide accurate and meaningful information.</p>
+<p><strong>Mixed Prompt Approach</strong></p>
+<p>By designing prompts that consist of a combination of questions and potential answers, encompassing both within and beyond the model's knowledge domain, you help the LLM better discern the boundaries of its expertise. This mixed prompt approach contributes to more contextually appropriate and factual responses.</p>
+<hr>
+<h1 id=license align="center"> License</h1>
+This project is licensed under the MIT License
+<hr>
+<h2 id="copyright-c-2023-interact-brands">Copyright (c) 2023 Interact-Brands</h2>
+
+</body>
+</html>
